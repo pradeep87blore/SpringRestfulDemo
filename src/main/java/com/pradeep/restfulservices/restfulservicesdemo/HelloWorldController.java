@@ -14,4 +14,10 @@ public class HelloWorldController {
 	{
 		return "Hello World, I am a Spring boot app";
 	}
+	
+	@GetMapping(path = "/hello-world-bean")
+	public HelloWorldBean helloWorldBean()
+	{
+		return new HelloWorldBean("Hello World");
+	}
 }
