@@ -1,4 +1,4 @@
-package com.pradeep.restfulservices.restfulservicesdemo;
+package com.pradeep.restfulservices.restfulservicesdemo.helloworld;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

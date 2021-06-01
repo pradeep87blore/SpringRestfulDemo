@@ -1,4 +1,4 @@
-package com.pradeep.restfulservices.restfulservicesdemo;
+package com.pradeep.restfulservices.restfulservicesdemo.helloworld;
 
 public class HelloWorldBean {
 
