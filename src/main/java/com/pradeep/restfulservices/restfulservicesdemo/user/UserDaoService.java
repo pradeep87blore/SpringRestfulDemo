@@ -44,6 +44,19 @@ public class UserDaoService {
 			throw new UserNotFoundException("Requested Id: " + id + " not found");
 			
 		}
+		
+		public void deleteUser(int id)
+		{
+			for(User user: users)
+			{
+				if(user.getId() == id)
+				{
+					users.remove(user);
+				}
+			}
+			
+			throw new UserNotFoundException("Requested Id: " + id + " not found");
+		}
 
 		public User save(User user) {
 			
