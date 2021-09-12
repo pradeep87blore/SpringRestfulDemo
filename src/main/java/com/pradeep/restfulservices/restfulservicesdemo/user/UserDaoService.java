@@ -43,5 +43,11 @@ public class UserDaoService {
 			
 			return null;
 		}
+
+		public User save(User user) {
+			
+			return addUser(user);
+			
+		}
 		
 }

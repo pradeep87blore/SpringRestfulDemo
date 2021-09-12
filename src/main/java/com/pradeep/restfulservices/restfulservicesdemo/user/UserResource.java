@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,5 +28,13 @@ public class UserResource {
 	public User findUser(@PathVariable Integer id)
 	{
 		return uds.findUser(id);
+	}
+	
+	// Create a new user
+	@PostMapping("/users")
+	public User createUser(@RequestBody User user)
+	{
+		User savedUser = uds.save(user);
+		return savedUser;
 	}
 }
