@@ -3,9 +3,13 @@ package com.pradeep.restfulservices.restfulservicesdemo.user;
 import java.net.URI;
 import java.util.List;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*; // Import all static methods in this class
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,9 +34,16 @@ public class UserResource {
 	
 	// Find specific user
 	@GetMapping(path = "/users/{id}")
-	public User findUser(@PathVariable Integer id)
+	public EntityModel<User> findUser(@PathVariable Integer id)
 	{
-		return uds.findUser(id);
+		// The below EntityModel allows us to provide the link for "findAllUsers" as part of the response.
+		EntityModel<User> model = EntityModel.of(uds.findUser(id)); // Find users as usual
+		WebMvcLinkBuilder linkToUsers = linkTo(methodOn(this.getClass()).findAllUsers()); // Here is the part establishing the dynamic link
+		model.add(linkToUsers.withRel("all-users")); // Add the link to the "findAllUsers" request path to the response
+		
+		WebMvcLinkBuilder linkToDeleteUser = linkTo(methodOn(this.getClass()).deleteUser(id)); // Here is the part establishing the dynamic link
+		model.add(linkToDeleteUser.withRel("delete-user")); // Add the link to the "findAllUsers" request path to the response
+		return model; // Return the enriched response
 	}
 	
 	// Create a new user
