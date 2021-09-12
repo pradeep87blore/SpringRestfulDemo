@@ -41,7 +41,8 @@ public class UserDaoService {
 					return user;
 			}
 			
-			return null;
+			throw new UserNotFoundException("Requested Id: " + id + " not found");
+			
 		}
 
 		public User save(User user) {
