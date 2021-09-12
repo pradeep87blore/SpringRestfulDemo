@@ -2,8 +2,20 @@ package com.pradeep.restfulservices.restfulservicesdemo.user;
 
 import java.util.Date;
 
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
 public class User {
 
+
+	private Integer id;
+	
+	@Size(min=3, message="Name should have at least 3 characters") // This validates that the size should be at least 3
+	private String name;
+	
+	@Past (message="Date of birth cannot be in the future")// This validates that the date should always be in the past
+	private Date dob;
+	
 		public User(Integer id, String name, Date dob) {
 		super();
 		this.id = id;
@@ -40,10 +52,5 @@ public class User {
 		this.dob = dob;
 	}
 
-		private Integer id;
-		
-		private String name;
-		
-		private Date dob;
 		
 }
