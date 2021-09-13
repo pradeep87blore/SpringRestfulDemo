@@ -81,6 +81,31 @@
 			"response": []
 		},
 		{
+			"name": "Get All Users in XML",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get User",
 			"request": {
 				"method": "GET",
